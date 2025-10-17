@@ -1,4 +1,4 @@
--- Create the database and switch to it
+-- Create the database and select it
 CREATE DATABASE IF NOT EXISTS alx_book_store;
 USE alx_book_store;
 
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS CUSTOMERS (
 CREATE TABLE IF NOT EXISTS ORDERS (
     order_id INT AUTO_INCREMENT PRIMARY KEY,
     customer_id INT,
-    order_date DATE,
+    order_date DATE NOT NULL,
     FOREIGN KEY (customer_id) REFERENCES CUSTOMERS(customer_id)
 );
 
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS ORDER_DETAILS (
     orderdetail_id INT AUTO_INCREMENT PRIMARY KEY,
     order_id INT,
     book_id INT,
-    quantity DOUBLE,
+    quantity DOUBLE NOT NULL,
     FOREIGN KEY (order_id) REFERENCES ORDERS(order_id),
     FOREIGN KEY (book_id) REFERENCES BOOKS(book_id)
 );
